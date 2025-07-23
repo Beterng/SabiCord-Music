@@ -51,11 +51,6 @@ export class BasicCommands {
     })
     end?: string
   ): Promise<void> {
-    // Get log bởi chị ChatGPT xinh đẹp
-      console.log('typeof interaction', typeof interaction);
-      console.log('prototype', Object.getPrototypeOf(interaction));
-      console.log('[interaction.constructor.name]', interaction.constructor.name);
-      console.log('[interaction]', interaction);
     // code project
       if (!interaction.guild || !interaction.guildId || !interaction.member) {
         await interaction.reply({ content: '❌ This command can only be used in a server!', ephemeral: true });
