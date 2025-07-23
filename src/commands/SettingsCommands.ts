@@ -160,7 +160,7 @@ export class SettingsCommands {
       await database.settings.updateSettings(interaction.guild.id, {
         $set: { 
           music_request_channel: {
-            text_channel_id: parseInt(channel.id)
+            text_channel_id: channel.id
           }
         }
       });
