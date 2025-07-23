@@ -128,6 +128,19 @@ describe('Settings', () => {
       expect(settings.lyrics_platform).toBe('lrclib');
       expect(settings.activity).toEqual([{ type: 'listening', name: '/help', status: 'online' }]);
     });
+
+    it('should set default voice status template when no file config is provided', () => {
+      process.env.DISCORD_TOKEN = 'test-token';
+      process.env.DISCORD_CLIENT_ID = 'test-client-id';
+      process.env.MONGODB_URL = 'mongodb://test:27017';
+      process.env.MONGODB_NAME = 'test-db';
+
+      mockExistsSync.mockReturnValue(false);
+
+      const settings = new Settings();
+
+      expect(settings.default_voice_status_template).toBe("{{@@track_name@@ != \'None\' ?? @@track_source_emoji@@ Now Playing: @@track_name@@}}");
+    });
   });
 
   describe('getDefaultNodes', () => {
