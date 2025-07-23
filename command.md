@@ -1,130 +1,91 @@
 # application commands
+    settings (SettingsCommands.SettingsCommands)
+            prefix: subcommand (SettingsCommands.prefix)
+            *   prefix: string (SettingsCommands.prefix)
 
-### hello-btn (Example.hello)
-### user: user (Example.hello)
-### like-it (Example.slashLikeIt)
-### my_roles (Example.myRoles)
-### choose (Example.choose)
-        - 1 what: string (Example.choose)
-### choose1 (Example.choose1)
-        - 1 what1: string (Example.choose1)
+            language: subcommand (SettingsCommands.language)
+            *   language: string (SettingsCommands.language)
 
-### all-commands (SlashExample.pages)
+            musicchannel: subcommand (SettingsCommands.musicchannel)
+            *   channel: channel (SettingsCommands.musicchannel)
 
-### testing (GroupExample.GroupExample)
-        - 1 root: subcommand (GroupExample.root)
-                        ### text: string (GroupExample.root)
+            controller: subcommand (SettingsCommands.controller)
+            *   enabled: boolean (SettingsCommands.controller)
 
-        - 2 maths: subcommandgroup (GroupExample.GroupExample)
-                        -- 1 add: subcommand (GroupExample.add)
-                                        ### y: number (GroupExample.add)
-                                        ### x: number (GroupExample.add)
+            view: subcommand (SettingsCommands.view)
 
-                        --2 multiply: subcommand (GroupExample.multiply)
-                                        ### y: number (GroupExample.multiply)
-                                        ### x: number (GroupExample.multiply)
+            connect: subcommand (SettingsCommands.connect)
+            *   channel: channel (SettingsCommands.connect)
 
-### settings (SettingsCommands.SettingsCommands)
-        ### prefix: subcommand (SettingsCommands.prefix)
-                        ### prefix: string (SettingsCommands.prefix)
+            disconnect: subcommand (SettingsCommands.disconnect)
 
-        ### language: subcommand (SettingsCommands.language)
-                        ### language: string (SettingsCommands.language)
+            info: subcommand (SettingsCommands.info)
 
-        ### musicchannel: subcommand (SettingsCommands.musicchannel)
-                        ### channel: channel (SettingsCommands.musicchannel)
+            ping: subcommand (SettingsCommands.ping)
 
-        ### controller: subcommand (SettingsCommands.controller)
-                        ### enabled: boolean (SettingsCommands.controller)
+#    queue (PlaylistCommands.PlaylistCommands)
+            list: subcommand (PlaylistCommands.list)
+            *   page: integer (PlaylistCommands.list)
 
-        ### view: subcommand (SettingsCommands.view)
+            shuffle: subcommand (PlaylistCommands.shuffle)
 
-        ### connect: subcommand (SettingsCommands.connect)
-                        ### channel: channel (SettingsCommands.connect)
+            clear: subcommand (PlaylistCommands.clear)
 
-        ### disconnect: subcommand (SettingsCommands.disconnect)
+            remove: subcommand (PlaylistCommands.remove)
+            *   end: integer (PlaylistCommands.remove)
+            *   position: integer (PlaylistCommands.remove)
 
-        ### info: subcommand (SettingsCommands.info)
+            repeat: subcommand (PlaylistCommands.repeat)
+            *   mode: string (PlaylistCommands.repeat)
 
-        ### ping: subcommand (SettingsCommands.ping)
+            skipto: subcommand (PlaylistCommands.skipto)
+            *   position: integer (PlaylistCommands.skipto)
 
-### queue (PlaylistCommands.PlaylistCommands)
-        ### list: subcommand (PlaylistCommands.list)
-                        ### page: integer (PlaylistCommands.list)
+            history: subcommand (PlaylistCommands.history)
+            *   page: integer (PlaylistCommands.history)
 
-        ### shuffle: subcommand (PlaylistCommands.shuffle)
+#    effects (EffectCommands.EffectCommands)
+            bassboost: subcommand (EffectCommands.bassboost)
+            *   level: integer (EffectCommands.bassboost)
 
-        ### clear: subcommand (PlaylistCommands.clear)
+            nightcore: subcommand (EffectCommands.nightcore)
+            *   pitch: number (EffectCommands.nightcore)
+            *   speed: number (EffectCommands.nightcore)
 
-        ### remove: subcommand (PlaylistCommands.remove)
-                        ### end: integer (PlaylistCommands.remove)
-                        ### position: integer (PlaylistCommands.remove)
+            vaporwave: subcommand (EffectCommands.vaporwave)
+            *   pitch: number (EffectCommands.vaporwave)
+            *   speed: number (EffectCommands.vaporwave)
 
-        ### repeat: subcommand (PlaylistCommands.repeat)
-                        ### mode: string (PlaylistCommands.repeat)
+            eightd: subcommand (EffectCommands.eightd)
+            *   speed: number (EffectCommands.eightd)
 
-        ### skipto: subcommand (PlaylistCommands.skipto)
-                        ### position: integer (PlaylistCommands.skipto)
+            karaoke: subcommand (EffectCommands.karaoke)
+            *   level: number (EffectCommands.karaoke)
 
-        ### history: subcommand (PlaylistCommands.history)
-                        ### page: integer (PlaylistCommands.history)
+            tremolo: subcommand (EffectCommands.tremolo)
+            *   depth: number (EffectCommands.tremolo)
+            *   frequency: number (EffectCommands.tremolo)
 
-### effects (EffectCommands.EffectCommands)
-        ### bassboost: subcommand (EffectCommands.bassboost)
-                        ### level: integer (EffectCommands.bassboost)
+            clear: subcommand (EffectCommands.clear)
 
-        ### nightcore: subcommand (EffectCommands.nightcore)
-                        ### pitch: number (EffectCommands.nightcore)
-                        ### speed: number (EffectCommands.nightcore)
+            status: subcommand (EffectCommands.status)
 
-        ### vaporwave: subcommand (EffectCommands.vaporwave)
-                        ### pitch: number (EffectCommands.vaporwave)
-                        ### speed: number (EffectCommands.vaporwave)
+#    music (BasicCommands.BasicCommands)
+            play: subcommand (BasicCommands.play)
+            *   end: string (BasicCommands.play)
+            *   start: string (BasicCommands.play)
+            *   query: string (BasicCommands.play)
 
-        ### eightd: subcommand (EffectCommands.eightd)
-                        ### speed: number (EffectCommands.eightd)
+            pause: subcommand (BasicCommands.pause)
 
-        ### karaoke: subcommand (EffectCommands.karaoke)
-                        ### level: number (EffectCommands.karaoke)
+            resume: subcommand (BasicCommands.resume)
 
-        ### tremolo: subcommand (EffectCommands.tremolo)
-                        ### depth: number (EffectCommands.tremolo)
-                        ### frequency: number (EffectCommands.tremolo)
+            skip: subcommand (BasicCommands.skip)
+            *   count: integer (BasicCommands.skip)
 
-        ### clear: subcommand (EffectCommands.clear)
+            stop: subcommand (BasicCommands.stop)
 
-        ### status: subcommand (EffectCommands.status)
+            nowplaying: subcommand (BasicCommands.nowplaying)
 
-### music (BasicCommands.BasicCommands)
-        ### play: subcommand (BasicCommands.play)
-                        ### end: string (BasicCommands.play)
-                        ### start: string (BasicCommands.play)
-                        ### query: string (BasicCommands.play)
-
-        ### pause: subcommand (BasicCommands.pause)
-
-        ### resume: subcommand (BasicCommands.resume)
-
-        ### skip: subcommand (BasicCommands.skip)
-                        ### count: integer (BasicCommands.skip)
-
-        ### stop: subcommand (BasicCommands.stop)
-
-        ### nowplaying: subcommand (BasicCommands.nowplaying)
-
-        ### volume: subcommand (BasicCommands.volume)
-                        ### level: integer (BasicCommands.volume)
-
-### message context (Example.messageHandler)
-
-### user context (Example.userHandler)
-
-client >> simple commands
-### hello (Example.hello)
-                aliases: hi
-
-### sum (Example.sum)
-                num2: Number (Example.sum)
-                num1: Number (Example.sum)
-
-### like-it (Example.simpleLikeIt)
+            volume: subcommand (BasicCommands.volume)
+            *   level: integer (BasicCommands.volume)

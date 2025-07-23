@@ -13,12 +13,14 @@ import {
   TextChannel
 } from 'discord.js';
 import { Discord, Slash, SlashOption, SlashChoice,SlashGroup } from 'discordx';
+import { Category } from '@discordx/utilities';
 import { injectable, container } from 'tsyringe';
 import { getPlayer, connectChannel } from '../audio/index';
 import { Database } from '../core/Database';
 import { Settings } from '../core/Settings';
 import { logger } from '../core/Logger';
 @Discord()
+@Category("Admin Commands")
 @SlashGroup({ description: 'Bot configuration and settings commands', name: 'settings' })
 @SlashGroup('settings')
 @injectable()
@@ -371,10 +373,10 @@ export class SettingsCommands {
     return parts.join(' ') || '0s';
   }
   private async validateGuildAndPermissions(interaction: CommandInteraction): Promise<{ isValid: boolean; errorMessage?: string }> {
-    if (!interaction.guild) {
+    if (interaction.guildId) {
       return { isValid: false, errorMessage: '❌ This command can only be used in servers!' };
     }
-    const member = interaction.guild.members.cache.get(interaction.user.id);
+    const member = interaction.guild?.members.cache.get(interaction.user.id);
     if (!member?.permissions.has(PermissionFlagsBits.ManageGuild)) {
       return {
         isValid: false,
@@ -383,5 +385,4 @@ export class SettingsCommands {
     }
     return { isValid: true };
   }
-
 }

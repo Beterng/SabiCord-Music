@@ -1,6 +1,6 @@
 import type { CommandInteraction, Message } from "discord.js";
 import type { SimpleCommandMessage } from "discordx";
-import { SlashHelp } from "../commands/Help";
+import { SlashHelp } from "../#hidden.commands/Help";
 import {
   Discord,
   SimpleCommand,

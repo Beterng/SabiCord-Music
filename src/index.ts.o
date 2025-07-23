@@ -4,7 +4,6 @@ import { dirname, importx } from "@discordx/importer";
 import type { Interaction, Message } from "discord.js";
 import { IntentsBitField } from "discord.js";
 import { Client } from "discordx";
-import { SabiCordMusicClient } from "./core/RefactoredMusicClient";
 dotenv.config();
 
 export const bot = new Client({
@@ -40,9 +39,9 @@ async function run() {
   await bot.initApplicationCommands();
 
   // It must only be executed once
-  // await bot.clearApplicationCommands(
-  //   ...bot.guilds.cache.map((g) => g.id)
-  // );
+  await bot.clearApplicationCommands(
+    ...bot.guilds.cache.map((g) => g.id)
+  );
 
   console.log("Bot started");
   });
@@ -62,20 +61,24 @@ async function run() {
   
 }
 
+void run();
+
 async function main(): Promise<void> {
   try {
     
-    console.log('Starting SabiCord Discord Music Bot...');
+    nodeConsole.log('Starting SabiCord Discord Music Bot...');
     const client = new SabiCordMusicClient();
-    void run();
+
+    await bot.initApplicationCommands();
+
     
-    //  client.start();
+    await client.start();
   } catch (error) {
-    console.error('Failed to start bot:', error);
-    process.exit(1);
+    nodeConsole.error('Failed to start bot:', error);
+    nodeProcess.exit(1);
   }
 }
 main().catch((error) => {
-  console.error('Fatal error:', error);
-  process.exit(1);
+  nodeConsole.error('Fatal error:', error);
+  nodeProcess.exit(1);
 });

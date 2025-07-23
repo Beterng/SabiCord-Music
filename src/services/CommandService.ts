@@ -16,10 +16,10 @@ export class CommandService implements ICommandManager {
   public async importCommands(): Promise<void> {
     try {
       // Import commands explicitly to avoid dynamic import issues
-      await import('../commands/BasicCommands');
-      await import('../commands/EffectCommands');
-      await import('../commands/PlaylistCommands');
-      await import('../commands/SettingsCommands');
+      await import('../#hidden.commands/BasicCommands');
+      await import('../#hidden.commands/EffectCommands');
+      await import('../#hidden.commands/PlaylistCommands');
+      await import('../#hidden.commands/SettingsCommands');
       this.logger.info('Commands imported successfully', 'commands');
     } catch (error) {
       this.logger.error('Failed to import commands', error as Error, 'commands');

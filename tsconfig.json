@@ -19,7 +19,7 @@
       "@core/*": ["src/core/*"],
       "@interfaces/*": ["src/interfaces/*"],
       "@audio/*": ["src/audio/*"],
-      "@commands/*": ["src/commands/*"],
+      "@commands/*": ["src/#hidden.commands/*"],
       "@views/*": ["src/views/*"],
       "@ipc/*": ["src/ipc/*"],
       "@localization/*": ["src/localization/*"],

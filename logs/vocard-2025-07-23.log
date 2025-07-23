@@ -62,3 +62,191 @@
 2025-07-23 07:25:40 [INFO][client.toUpperCase()]: Serving 2 guilds
 2025-07-23 07:25:40 [INFO][client.toUpperCase()]: ------------------
 2025-07-23 07:25:42 [INFO][client.toUpperCase()]: Shutting down bot...
+2025-07-23 22:17:32 [INFO][CLIENT]: Services initialized successfully
+2025-07-23 22:17:33 [INFO][DATABASE]: Successfully connected to MongoDB
+2025-07-23 22:17:33 [INFO][DATABASE]: Database repositories initialized successfully
+2025-07-23 22:17:33 [INFO][DATABASE]: Database service initialized successfully
+2025-07-23 22:17:33 [INFO][CLIENT]: Database connected successfully
+2025-07-23 22:17:33 [INFO][EVENTS]: Event handlers registered
+2025-07-23 22:17:34 [INFO][COMMANDS]: Commands imported successfully
+2025-07-23 22:17:35 [INFO][CLIENT]: Bot started successfully
+2025-07-23 22:17:35 [INFO][CLIENT]: ------------------
+2025-07-23 22:17:35 [INFO][CLIENT]: Logged in as Lina Bot#1028
+2025-07-23 22:17:35 [INFO][CLIENT]: Bot ID: 1170369770101682256
+2025-07-23 22:17:35 [INFO][CLIENT]: Serving 2 guilds
+2025-07-23 22:17:35 [INFO][CLIENT]: ------------------
+2025-07-23 22:18:51 [INFO][CLIENT]: Shutting down bot...
+2025-07-23 22:18:53 [INFO][CLIENT]: Services initialized successfully
+2025-07-23 22:18:55 [INFO][DATABASE]: Successfully connected to MongoDB
+2025-07-23 22:18:55 [INFO][DATABASE]: Database repositories initialized successfully
+2025-07-23 22:18:55 [INFO][DATABASE]: Database service initialized successfully
+2025-07-23 22:18:55 [INFO][CLIENT]: Database connected successfully
+2025-07-23 22:18:55 [INFO][EVENTS]: Event handlers registered
+2025-07-23 22:18:55 [INFO][COMMANDS]: Commands imported successfully
+2025-07-23 22:18:56 [INFO][CLIENT]: Bot started successfully
+2025-07-23 22:18:56 [INFO][CLIENT]: ------------------
+2025-07-23 22:18:56 [INFO][CLIENT]: Logged in as Lina Bot#1028
+2025-07-23 22:18:56 [INFO][CLIENT]: Bot ID: 1170369770101682256
+2025-07-23 22:18:56 [INFO][CLIENT]: Serving 2 guilds
+2025-07-23 22:18:56 [INFO][CLIENT]: ------------------
+2025-07-23 22:20:46 [INFO][CLIENT]: Shutting down bot...
+2025-07-23 22:20:50 [INFO][CLIENT]: Services initialized successfully
+2025-07-23 22:20:51 [INFO][DATABASE]: Successfully connected to MongoDB
+2025-07-23 22:20:51 [INFO][DATABASE]: Database repositories initialized successfully
+2025-07-23 22:20:51 [INFO][DATABASE]: Database service initialized successfully
+2025-07-23 22:20:51 [INFO][CLIENT]: Database connected successfully
+2025-07-23 22:20:51 [INFO][EVENTS]: Event handlers registered
+2025-07-23 22:20:51 [INFO][COMMANDS]: Commands imported successfully
+2025-07-23 22:20:52 [INFO][CLIENT]: Bot started successfully
+2025-07-23 22:20:52 [INFO][CLIENT]: ------------------
+2025-07-23 22:20:52 [INFO][CLIENT]: Logged in as Lina Bot#1028
+2025-07-23 22:20:52 [INFO][CLIENT]: Bot ID: 1170369770101682256
+2025-07-23 22:20:52 [INFO][CLIENT]: Serving 2 guilds
+2025-07-23 22:20:52 [INFO][CLIENT]: ------------------
+2025-07-23 22:20:57 [INFO][CLIENT]: Shutting down bot...
+2025-07-23 22:21:40 [INFO][CLIENT]: Services initialized successfully
+2025-07-23 22:21:41 [INFO][DATABASE]: Successfully connected to MongoDB
+2025-07-23 22:21:41 [INFO][DATABASE]: Database repositories initialized successfully
+2025-07-23 22:21:41 [INFO][DATABASE]: Database service initialized successfully
+2025-07-23 22:21:41 [INFO][CLIENT]: Database connected successfully
+2025-07-23 22:21:41 [INFO][EVENTS]: Event handlers registered
+2025-07-23 22:21:41 [INFO][COMMANDS]: Commands imported successfully
+2025-07-23 22:21:42 [INFO][CLIENT]: Bot started successfully
+2025-07-23 22:21:42 [INFO][CLIENT]: ------------------
+2025-07-23 22:21:42 [INFO][CLIENT]: Logged in as Lina Bot#1028
+2025-07-23 22:21:42 [INFO][CLIENT]: Bot ID: 1170369770101682256
+2025-07-23 22:21:42 [INFO][CLIENT]: Serving 2 guilds
+2025-07-23 22:21:42 [INFO][CLIENT]: ------------------
+2025-07-23 22:22:15 [INFO][CLIENT]: Shutting down bot...
+2025-07-23 22:22:17 [INFO][CLIENT]: Services initialized successfully
+2025-07-23 22:22:18 [INFO][DATABASE]: Successfully connected to MongoDB
+2025-07-23 22:22:18 [INFO][DATABASE]: Database repositories initialized successfully
+2025-07-23 22:22:18 [INFO][DATABASE]: Database service initialized successfully
+2025-07-23 22:22:18 [INFO][CLIENT]: Database connected successfully
+2025-07-23 22:22:18 [INFO][EVENTS]: Event handlers registered
+2025-07-23 22:22:18 [INFO][COMMANDS]: Commands imported successfully
+2025-07-23 22:22:19 [INFO][CLIENT]: Bot started successfully
+2025-07-23 22:22:19 [INFO][CLIENT]: ------------------
+2025-07-23 22:22:19 [INFO][CLIENT]: Logged in as Lina Bot#1028
+2025-07-23 22:22:19 [INFO][CLIENT]: Bot ID: 1170369770101682256
+2025-07-23 22:22:19 [INFO][CLIENT]: Serving 2 guilds
+2025-07-23 22:22:19 [INFO][CLIENT]: ------------------
+2025-07-23 22:22:28 [INFO][CLIENT]: Shutting down bot...
+2025-07-23 22:22:30 [INFO][CLIENT]: Services initialized successfully
+2025-07-23 22:22:30 [INFO][DATABASE]: Successfully connected to MongoDB
+2025-07-23 22:22:30 [INFO][DATABASE]: Database repositories initialized successfully
+2025-07-23 22:22:30 [INFO][DATABASE]: Database service initialized successfully
+2025-07-23 22:22:30 [INFO][CLIENT]: Database connected successfully
+2025-07-23 22:22:30 [INFO][EVENTS]: Event handlers registered
+2025-07-23 22:22:30 [INFO][COMMANDS]: Commands imported successfully
+2025-07-23 22:22:32 [INFO][CLIENT]: Bot started successfully
+2025-07-23 22:22:32 [INFO][CLIENT]: ------------------
+2025-07-23 22:22:32 [INFO][CLIENT]: Logged in as Lina Bot#1028
+2025-07-23 22:22:32 [INFO][CLIENT]: Bot ID: 1170369770101682256
+2025-07-23 22:22:32 [INFO][CLIENT]: Serving 2 guilds
+2025-07-23 22:22:32 [INFO][CLIENT]: ------------------
+2025-07-23 22:22:54 [INFO][CLIENT]: Shutting down bot...
+2025-07-23 22:22:56 [INFO][CLIENT]: Services initialized successfully
+2025-07-23 22:22:57 [INFO][DATABASE]: Successfully connected to MongoDB
+2025-07-23 22:22:57 [INFO][DATABASE]: Database repositories initialized successfully
+2025-07-23 22:22:57 [INFO][DATABASE]: Database service initialized successfully
+2025-07-23 22:22:57 [INFO][CLIENT]: Database connected successfully
+2025-07-23 22:22:57 [INFO][EVENTS]: Event handlers registered
+2025-07-23 22:22:57 [INFO][COMMANDS]: Commands imported successfully
+2025-07-23 22:22:58 [INFO][CLIENT]: Bot started successfully
+2025-07-23 22:22:58 [INFO][CLIENT]: ------------------
+2025-07-23 22:22:58 [INFO][CLIENT]: Logged in as Lina Bot#1028
+2025-07-23 22:22:58 [INFO][CLIENT]: Bot ID: 1170369770101682256
+2025-07-23 22:22:58 [INFO][CLIENT]: Serving 2 guilds
+2025-07-23 22:22:58 [INFO][CLIENT]: ------------------
+2025-07-23 22:23:58 [INFO][CLIENT]: Shutting down bot...
+2025-07-23 22:24:00 [INFO][CLIENT]: Services initialized successfully
+2025-07-23 22:24:00 [INFO][DATABASE]: Successfully connected to MongoDB
+2025-07-23 22:24:00 [INFO][DATABASE]: Database repositories initialized successfully
+2025-07-23 22:24:00 [INFO][DATABASE]: Database service initialized successfully
+2025-07-23 22:24:00 [INFO][CLIENT]: Database connected successfully
+2025-07-23 22:24:00 [INFO][EVENTS]: Event handlers registered
+2025-07-23 22:24:00 [INFO][COMMANDS]: Commands imported successfully
+2025-07-23 22:24:01 [INFO][CLIENT]: Bot started successfully
+2025-07-23 22:24:01 [INFO][CLIENT]: ------------------
+2025-07-23 22:24:01 [INFO][CLIENT]: Logged in as Lina Bot#1028
+2025-07-23 22:24:01 [INFO][CLIENT]: Bot ID: 1170369770101682256
+2025-07-23 22:24:01 [INFO][CLIENT]: Serving 2 guilds
+2025-07-23 22:24:01 [INFO][CLIENT]: ------------------
+2025-07-23 22:24:14 [INFO][CLIENT]: Shutting down bot...
+2025-07-23 22:24:40 [INFO][CLIENT]: Services initialized successfully
+2025-07-23 22:24:40 [INFO][DATABASE]: Successfully connected to MongoDB
+2025-07-23 22:24:40 [INFO][DATABASE]: Database repositories initialized successfully
+2025-07-23 22:24:40 [INFO][DATABASE]: Database service initialized successfully
+2025-07-23 22:24:40 [INFO][CLIENT]: Database connected successfully
+2025-07-23 22:24:40 [INFO][EVENTS]: Event handlers registered
+2025-07-23 22:24:41 [INFO][COMMANDS]: Commands imported successfully
+2025-07-23 22:24:42 [INFO][CLIENT]: Bot started successfully
+2025-07-23 22:24:42 [INFO][CLIENT]: ------------------
+2025-07-23 22:24:42 [INFO][CLIENT]: Logged in as Lina Bot#1028
+2025-07-23 22:24:42 [INFO][CLIENT]: Bot ID: 1170369770101682256
+2025-07-23 22:24:42 [INFO][CLIENT]: Serving 2 guilds
+2025-07-23 22:24:42 [INFO][CLIENT]: ------------------
+2025-07-23 22:25:32 [INFO][CLIENT]: Shutting down bot...
+2025-07-23 22:26:54 [INFO][CLIENT]: Services initialized successfully
+2025-07-23 22:26:55 [INFO][DATABASE]: Successfully connected to MongoDB
+2025-07-23 22:26:55 [INFO][DATABASE]: Database repositories initialized successfully
+2025-07-23 22:26:55 [INFO][DATABASE]: Database service initialized successfully
+2025-07-23 22:26:55 [INFO][CLIENT]: Database connected successfully
+2025-07-23 22:26:55 [INFO][EVENTS]: Event handlers registered
+2025-07-23 22:26:55 [INFO][COMMANDS]: Commands imported successfully
+2025-07-23 22:26:57 [INFO][CLIENT]: Bot started successfully
+2025-07-23 22:26:57 [INFO][CLIENT]: ------------------
+2025-07-23 22:26:57 [INFO][CLIENT]: Logged in as Lina Bot#1028
+2025-07-23 22:26:57 [INFO][CLIENT]: Bot ID: 1170369770101682256
+2025-07-23 22:26:57 [INFO][CLIENT]: Serving 2 guilds
+2025-07-23 22:26:57 [INFO][CLIENT]: ------------------
+2025-07-23 22:27:15 [INFO][CLIENT]: Shutting down bot...
+2025-07-23 22:27:17 [INFO][CLIENT]: Services initialized successfully
+2025-07-23 22:27:17 [INFO][DATABASE]: Successfully connected to MongoDB
+2025-07-23 22:27:17 [INFO][DATABASE]: Database repositories initialized successfully
+2025-07-23 22:27:17 [INFO][DATABASE]: Database service initialized successfully
+2025-07-23 22:27:17 [INFO][CLIENT]: Database connected successfully
+2025-07-23 22:27:17 [INFO][EVENTS]: Event handlers registered
+2025-07-23 22:27:17 [INFO][COMMANDS]: Commands imported successfully
+2025-07-23 22:27:19 [INFO][CLIENT]: Bot started successfully
+2025-07-23 22:27:19 [INFO][CLIENT]: ------------------
+2025-07-23 22:27:19 [INFO][CLIENT]: Logged in as Lina Bot#1028
+2025-07-23 22:27:19 [INFO][CLIENT]: Bot ID: 1170369770101682256
+2025-07-23 22:27:19 [INFO][CLIENT]: Serving 2 guilds
+2025-07-23 22:27:19 [INFO][CLIENT]: ------------------
+2025-07-23 22:37:38 [INFO][CLIENT]: Shutting down bot...
+2025-07-23 22:40:28 [INFO][CLIENT]: Services initialized successfully
+2025-07-23 22:40:29 [INFO][DATABASE]: Successfully connected to MongoDB
+2025-07-23 22:40:29 [INFO][DATABASE]: Database repositories initialized successfully
+2025-07-23 22:40:29 [INFO][DATABASE]: Database service initialized successfully
+2025-07-23 22:40:29 [INFO][CLIENT]: Database connected successfully
+2025-07-23 22:40:29 [INFO][EVENTS]: Event handlers registered
+2025-07-23 22:40:29 [INFO][COMMANDS]: Commands imported successfully
+2025-07-23 22:40:30 [INFO][CLIENT]: Bot started successfully
+2025-07-23 22:40:30 [INFO][CLIENT]: ------------------
+2025-07-23 22:40:30 [INFO][CLIENT]: Logged in as Lina Bot#1028
+2025-07-23 22:40:30 [INFO][CLIENT]: Bot ID: 1170369770101682256
+2025-07-23 22:40:30 [INFO][CLIENT]: Serving 2 guilds
+2025-07-23 22:40:30 [INFO][CLIENT]: ------------------
+2025-07-23 22:40:32 [INFO][CLIENT]: Shutting down bot...
+2025-07-23 23:17:46 [INFO][client.toUpperCase()]: Services initialized successfully
+2025-07-23 23:17:46 [INFO][database.toUpperCase()]: Successfully connected to MongoDB
+2025-07-23 23:17:46 [INFO][database.toUpperCase()]: Database repositories initialized successfully
+2025-07-23 23:17:46 [INFO][database.toUpperCase()]: Database service initialized successfully
+2025-07-23 23:17:46 [INFO][client.toUpperCase()]: Database connected successfully
+2025-07-23 23:17:46 [INFO][events.toUpperCase()]: Event handlers registered
+2025-07-23 23:17:47 [INFO][commands.toUpperCase()]: Commands imported successfully
+2025-07-23 23:17:48 [INFO][client.toUpperCase()]: Bot started successfully
+2025-07-23 23:17:48 [INFO][client.toUpperCase()]: ------------------
+2025-07-23 23:17:48 [INFO][client.toUpperCase()]: Logged in as Lina Bot#1028
+2025-07-23 23:17:48 [INFO][client.toUpperCase()]: Bot ID: 1170369770101682256
+2025-07-23 23:17:48 [INFO][client.toUpperCase()]: Serving 2 guilds
+2025-07-23 23:17:48 [INFO][client.toUpperCase()]: ------------------
+2025-07-23 23:19:34 [INFO][client.toUpperCase()]: Services initialized successfully
+2025-07-23 23:19:35 [INFO][database.toUpperCase()]: Successfully connected to MongoDB
+2025-07-23 23:19:35 [INFO][database.toUpperCase()]: Database repositories initialized successfully
+2025-07-23 23:19:35 [INFO][database.toUpperCase()]: Database service initialized successfully
+2025-07-23 23:19:35 [INFO][client.toUpperCase()]: Database connected successfully
+2025-07-23 23:19:35 [INFO][events.toUpperCase()]: Event handlers registered
+2025-07-23 23:19:35 [INFO][commands.toUpperCase()]: Commands imported successfully
