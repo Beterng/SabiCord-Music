@@ -44,14 +44,9 @@ A starter template equipped with several interaction commands and one event.
 
 ```
 npm install
-npm run dev
-```
-
-If you want to use [Nodemon](https://nodemon.io/) to auto-reload while in development:
-
-```
 npm run watch
 ```
+
 
 # 💻 Production
 
