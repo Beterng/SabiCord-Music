@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 30
+    },
+    "auditLog": "D:\\Github\\SabiCord-Music\\logs\\.be3d1b9f7be6bde1184db2eecc104d5967036a3e-audit.json",
+    "files": [
+        {
+            "date": 1753150660157,
+            "name": "D:\\Github\\SabiCord-Music\\logs\\vocard-2025-07-22.log",
+            "hash": "05346599e41e77c98ece18a9484146820346bc3b44ededdfb0130e8686ae8451"
+        }
+    ],
+    "hashType": "sha256"
+}
