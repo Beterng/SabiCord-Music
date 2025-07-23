@@ -43,17 +43,17 @@ export interface IUserRepository extends IRepository<IUserData, string> {
   createDefaultUser(userId: string): Promise<IUserData>;
 }
 export interface IGuildSettings {
-  _id: number;
+  _id: string;
   lang?: string;
   prefix?: string;
   music_request_channel?: {
-    text_channel_id: number;
+    text_channel_id: string;
   };
   controller_msg?: boolean;
   [key: string]: any;
 }
 export interface IUserData {
-  _id: number;
+  _id: string;
   playlist: Record<string, any>;
   history: any[];
   inbox: any[];
