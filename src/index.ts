@@ -34,13 +34,13 @@ async function run() {
 
   await importx(`${dirname(import.meta.url)}/{audio,commands,core,events,interfaces,ipc,localization,services,types,views}/**/*.{ts,js}`);
   
-  bot.once("ready", async () => {
-  await bot.initApplicationCommands();
-
   // It must only be executed once
   await bot.clearApplicationCommands(
     ...bot.guilds.cache.map((g) => g.id)
   );
+
+  bot.once("ready", async () => {
+  await bot.initApplicationCommands();
 
   console.log("Bot started");
   });

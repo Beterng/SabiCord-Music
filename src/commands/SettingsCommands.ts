@@ -1,3 +1,4 @@
+import { RPCCommandGetGuildPayload } from './../../node_modules/@discordjs/builders/node_modules/discord-api-types/rpc/v10.d';
 import { Guild } from 'discord.js';
 /**
  * MIT License
@@ -5,7 +6,7 @@ import { Guild } from 'discord.js';
  * Copyright (c) 2025 NirrussVn0
  */
 import { 
-  CommandInteraction, 
+  CommandInteraction, ChatInputCommandInteraction,
   ApplicationCommandOptionType, 
   EmbedBuilder,
   PermissionFlagsBits,
@@ -29,13 +30,13 @@ export class SettingsCommands {
   @Slash({ description: 'Set the bot prefix for this server' })
   async prefix(
     @SlashOption({
-      description: 'New prefix (leave empty to view current)',
       name: 'prefix',
+      description: 'New prefix (leave empty to view current)',
       required: false,
       type: ApplicationCommandOptionType.String,
       maxLength: 5,
     })
-    interaction: CommandInteraction,
+    interaction: ChatInputCommandInteraction,
     prefix?: string, 
   ): Promise<void> {
     // const interaction = port_interaction;
@@ -382,9 +383,8 @@ export class SettingsCommands {
     if (secs > 0) parts.push(`${secs}s`);
     return parts.join(' ') || '0s';
   }
-  private async validateGuildAndPermissions(port_interaction: CommandInteraction): Promise<{ isValid: boolean; errorMessage?: string }> {
-    const interaction = port_interaction;
-    if (!interaction.guild) {
+  private async validateGuildAndPermissions(interaction: ChatInputCommandInteraction): Promise<{ isValid: boolean; errorMessage?: string }> {
+    if (!interaction.inGuild()) {
       return { isValid: false, errorMessage: '❌ Interaction could not get a guild!' };
     }
     const member = interaction.guild?.members.cache.get(interaction.user.id);
@@ -396,5 +396,4 @@ export class SettingsCommands {
     }
     return { isValid: true };
   }
-
 }
