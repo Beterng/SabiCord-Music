@@ -28,7 +28,6 @@ import { logger } from '../core/Logger';
 export class SettingsCommands {
   @Slash({ description: 'Set the bot prefix for this server' })
   async prefix(
-    port_interaction: CommandInteraction,
     @SlashOption({
       description: 'New prefix (leave empty to view current)',
       name: 'prefix',
@@ -36,12 +35,13 @@ export class SettingsCommands {
       type: ApplicationCommandOptionType.String,
       maxLength: 5,
     })
-    prefix?: string
+    interaction: CommandInteraction,
+    prefix?: string, 
   ): Promise<void> {
-    const interaction = port_interaction;
+    // const interaction = port_interaction;
     const validation = await this.validateGuildAndPermissions(interaction);
     if (!validation.isValid) {
-      interaction.reply({ content: validation.errorMessage!, ephemeral: true});
+      await interaction.reply({ content: validation.errorMessage!, ephemeral: true});
       return;
     }
     try {
