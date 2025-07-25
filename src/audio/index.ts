@@ -23,7 +23,7 @@ export async function connectChannel(
 ): Promise<Player> {
   const guild = interaction.guild;
   if (!guild) {
-     throw new AudioException('Guild not found');
+    throw new AudioException('Guild not found');
   }
   const member = guild.members.cache.get(interaction.member?.user?.id || '');
   if (!member?.voice?.channel && !channel) {

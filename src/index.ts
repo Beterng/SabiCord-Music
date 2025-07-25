@@ -4,14 +4,18 @@ import { dirname, importx } from "@discordx/importer";
 import type { Interaction, Message } from "discord.js";
 import { IntentsBitField } from "discord.js";
 import { Client } from "discordx";
-import { SabiCordMusicClient } from "./core/RefactoredMusicClient";
+
+import 'module-alias/register';
+import 'reflect-metadata';
+import { SabiCordMusicClient } from './core/RefactoredMusicClient';
+
+
 dotenv.config();
 
-export const bot = new Client({
-  // To use only guild command
-  // botGuilds: [(client) => client.guilds.cache.map((guild) => guild.id)],
+const nodeProcess = eval('process');
+const nodeConsole = eval('console');
 
-  // Discord intents
+export const bot = new Client({
   intents: [
     IntentsBitField.Flags.Guilds,
     IntentsBitField.Flags.GuildMembers,
@@ -20,29 +24,23 @@ export const bot = new Client({
     IntentsBitField.Flags.GuildVoiceStates,
     IntentsBitField.Flags.MessageContent,
   ],
-
   silent: false,
-
   simpleCommand: {
     prefix: process.env.BOT_PREFIX?.toString() || "!",
   },
 });
 
 async function run() {
-  // The following syntax should be used in the commonjs environment
-  //await importx(__dirname + "/{events,commands}/**/*.{ts,js}");
-  // The following syntax should be used in the ECMAScript environment
-  await importx(`${dirname(import.meta.url)}/{core,commands/admin/setting,audio}/**/*.{ts,js}`);
-  //await importx(`${dirname(import.meta.url)}/{audio,commands/admin/setting,core,events,interfaces,ipc,localization,services,types,views}/**/*.{ts,js}`);
+
+  await importx(`${dirname(import.meta.url)}/{audio,commands,core,events,interfaces,ipc,localization,services,types,views}/**/*.{ts,js}`);
   
   bot.once("ready", async () => {
-  // Synchronize applications commands with Discord
   await bot.initApplicationCommands();
 
   // It must only be executed once
-  // await bot.clearApplicationCommands(
-  //   ...bot.guilds.cache.map((g) => g.id)
-  // );
+  await bot.clearApplicationCommands(
+    ...bot.guilds.cache.map((g) => g.id)
+  );
 
   console.log("Bot started");
   });
@@ -59,23 +57,20 @@ async function run() {
     throw Error("Could not find DISCORD_TOKEN in your environment");
   }
   await bot.login(process.env.DISCORD_TOKEN);
-  
 }
 
 async function main(): Promise<void> {
-  try {
-    
-    console.log('Starting SabiCord Discord Music Bot...');
+    try {
+    nodeConsole.log('Starting SabiCord Discord Music Bot...');
     const client = new SabiCordMusicClient();
+    await client.start();  
     void run();
-    
-    //  client.start();
   } catch (error) {
-    console.error('Failed to start bot:', error);
-    process.exit(1);
+    nodeConsole.error('Failed to start bot:', error);
+    nodeProcess.exit(1);
   }
 }
 main().catch((error) => {
-  console.error('Fatal error:', error);
-  process.exit(1);
+  nodeConsole.error('Fatal error:', error);
+  nodeProcess.exit(1);
 });

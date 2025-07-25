@@ -147,7 +147,7 @@ export class PlaylistCommands {
       type: ApplicationCommandOptionType.Integer,
       minValue: 1,
     })
-    _end?: number
+    end?: number
   ): Promise<void> {
     const player = getPlayer(interaction.guildId!);
     if (!player) {
@@ -193,7 +193,7 @@ export class PlaylistCommands {
       required: false,
       type: ApplicationCommandOptionType.String,
     })
-    _mode?: string
+    mode?: string
   ): Promise<void> {
     const player = getPlayer(interaction.guildId!);
     if (!player) {
@@ -291,7 +291,7 @@ export class PlaylistCommands {
         .setTitle('🎵 Your Listening History')
         .setDescription(
           pageHistory
-            .map((entry: any, index: number) => {
+            .map((entry, index) => {
               const position = startIndex + index + 1;
               const track = entry.track;
               const playedAt = new Date(entry.played_at).toLocaleDateString();

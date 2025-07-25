@@ -105,17 +105,17 @@ export interface ISettings {
   version?: string;
 }
 export interface IGuildSettings {
-  _id: string;
+  _id: number;
   lang?: string;
   prefix?: string;
   music_request_channel?: {
-    text_channel_id: string;
+    text_channel_id: number;
   };
   controller_msg?: boolean;
   [key: string]: any;
 }
 export interface IUserData {
-  _id: string;
+  _id: number;
   playlist: Record<string, IPlaylistData>;
   history: ITrackHistory[];
   inbox: any[];
@@ -137,12 +137,12 @@ export interface ITrackData {
   uri: string;
   length: number;
   thumbnail?: string;
-  requester?: string;
+  requester?: number;
   start_time?: number;
   end_time?: number;
 }
 export interface ITrackHistory {
   track: ITrackData;
   played_at: Date;
-  guild_id: string;
+  guild_id: number;
 }

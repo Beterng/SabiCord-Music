@@ -12,8 +12,8 @@ import {
   IUserRepository,
   ICacheManager,
   IDatabaseCache
-} from '../interfaces/IDatabase';
-import { IGuildSettings, IUserData } from '../interfaces/ISettings';
+} from '@interfaces/IDatabase';
+import { IGuildSettings, IUserData } from '@interfaces/ISettings';
 import { logger } from './Logger';
 
 class CacheManager<T> implements ICacheManager<T> {
@@ -98,7 +98,7 @@ class GuildSettingsRepository implements IGuildSettingsRepository {
     this.cache = cache;
   }
   async findById(id: string): Promise<IGuildSettings | null> {
-    return await this.collection.findOne({ _id: id });
+    return await this.collection.findOne({ _id: parseInt(id) });
   }
   async findOne(filter: any): Promise<IGuildSettings | null> {
     return await this.collection.findOne(filter);
@@ -120,7 +120,7 @@ class GuildSettingsRepository implements IGuildSettingsRepository {
     return result.acknowledged;
   }
   async updateById(id: string, data: Partial<IGuildSettings>): Promise<boolean> {
-    const result = await this.collection.updateOne({ _id: id }, { $set: data });
+    const result = await this.collection.updateOne({ _id: parseInt(id) }, { $set: data });
     return result.modifiedCount > 0;
   }
   async updateOne(filter: any, update: any): Promise<boolean> {
@@ -132,7 +132,7 @@ class GuildSettingsRepository implements IGuildSettingsRepository {
     return result.modifiedCount > 0;
   }
   async deleteById(id: string): Promise<boolean> {
-    const result = await this.collection.deleteOne({ _id: id });
+    const result = await this.collection.deleteOne({ _id: parseInt(id) });
     return result.deletedCount > 0;
   }
   async deleteOne(filter: any): Promise<boolean> {
@@ -151,7 +151,7 @@ class GuildSettingsRepository implements IGuildSettingsRepository {
     let settings = this.cache.get(cacheKey);
 
     if (!settings) {
-      const found = await this.findOne({ _id: guildId });
+      const found = await this.findOne({ _id: parseInt(guildId) });
 
       if (found) {
         settings = found;
@@ -167,14 +167,14 @@ class GuildSettingsRepository implements IGuildSettingsRepository {
     return settings;
   }
   async updateSettings(guildId: string, data: any): Promise<boolean> {
-    const result = await this.updateOne({ _id: guildId }, data);
+    const result = await this.updateOne({ _id: parseInt(guildId) }, data);
     if (result) {
       this.cache.delete(`settings:${guildId}`);
     }
     return result;
   }
   async createDefaultSettings(guildId: string): Promise<IGuildSettings> {
-    const settings: IGuildSettings = { _id: guildId };
+    const settings: IGuildSettings = { _id: parseInt(guildId) };
     await this.insertOne(settings);
     return settings;
   }
@@ -187,7 +187,7 @@ class UserRepository implements IUserRepository {
     this.cache = cache;
   }
   async findById(id: string): Promise<IUserData | null> {
-    return await this.collection.findOne({ _id: id });
+    return await this.collection.findOne({ _id: parseInt(id) });
   }
   async findOne(filter: any): Promise<IUserData | null> {
     return await this.collection.findOne(filter);
@@ -209,7 +209,7 @@ class UserRepository implements IUserRepository {
     return result.acknowledged;
   }
   async updateById(id: string, data: Partial<IUserData>): Promise<boolean> {
-    const result = await this.collection.updateOne({ _id: id }, { $set: data });
+    const result = await this.collection.updateOne({ _id: parseInt(id) }, { $set: data });
     return result.modifiedCount > 0;
   }
   async updateOne(filter: any, update: any): Promise<boolean> {
@@ -221,7 +221,7 @@ class UserRepository implements IUserRepository {
     return result.modifiedCount > 0;
   }
   async deleteById(id: string): Promise<boolean> {
-    const result = await this.collection.deleteOne({ _id: id });
+    const result = await this.collection.deleteOne({ _id: parseInt(id) });
     return result.deletedCount > 0;
   }
   async deleteOne(filter: any): Promise<boolean> {
@@ -240,7 +240,7 @@ async getUser(userId: string): Promise<IUserData> {
   let user = this.cache.get(cacheKey);
 
   if (!user) {
-    const found = await this.findOne({ _id: userId });
+    const found = await this.findOne({ _id: parseInt(userId) });
     if (found) {
       user = found;
     } else {
@@ -256,7 +256,7 @@ async getUser(userId: string): Promise<IUserData> {
   return user;
 }
   async updateUser(userId: string, data: any): Promise<boolean> {
-    const result = await this.updateOne({ _id: userId }, data);
+    const result = await this.updateOne({ _id: parseInt(userId) }, data);
     if (result) {
       this.cache.delete(`user:${userId}`);
     }
@@ -264,7 +264,7 @@ async getUser(userId: string): Promise<IUserData> {
   }
   async createDefaultUser(userId: string): Promise<IUserData> {
     const user: IUserData = {
-      _id: userId,
+      _id: parseInt(userId),
       playlist: {
         '200': {
           tracks: [],
@@ -290,7 +290,7 @@ async getUser(userId: string): Promise<IUserData> {
     const historyEntry = {
       track,
       played_at: new Date(),
-      guild_id: guildId,
+      guild_id: parseInt(guildId),
     };
     return await this.updateUser(userId, { $push: { history: { $each: [historyEntry], $slice: -50 } } });
   }

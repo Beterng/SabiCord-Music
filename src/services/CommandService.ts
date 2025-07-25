@@ -7,7 +7,7 @@ import { Client } from 'discord.js';
 import { ICommandManager } from '../interfaces/IClient';
 import { ILogger } from '../core/Logger';
 export class CommandService implements ICommandManager {
-  public client: Client;
+  private client: Client;
   private logger: ILogger;
   constructor(client: Client, logger: ILogger) {
     this.client = client;
@@ -16,10 +16,10 @@ export class CommandService implements ICommandManager {
   public async importCommands(): Promise<void> {
     try {
       // Import commands explicitly to avoid dynamic import issues
-      await import('../#hidden.commands/BasicCommands');
-      await import('../#hidden.commands/EffectCommands');
-      await import('../#hidden.commands/PlaylistCommands');
-      await import('../#hidden.commands/SettingsCommands');
+      await import('../commands/BasicCommands');
+      await import('../commands/EffectCommands');
+      await import('../commands/PlaylistCommands');
+      await import('../commands/SettingsCommands');
       this.logger.info('Commands imported successfully', 'commands');
     } catch (error) {
       this.logger.error('Failed to import commands', error as Error, 'commands');

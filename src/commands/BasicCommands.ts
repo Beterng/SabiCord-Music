@@ -6,9 +6,7 @@
 import {
   CommandInteraction,
   ApplicationCommandOptionType,
-  ChatInputCommandInteraction,
-  EmbedBuilder,
-  resolveColor
+  EmbedBuilder
 } from 'discord.js';
 import { Discord, Slash, SlashOption, SlashGroup } from 'discordx';
 import { injectable } from 'tsyringe';
@@ -16,19 +14,14 @@ import { connectChannel, getPlayer, searchTracks } from '../audio/index';
 import { Track, SearchType } from '../audio/index';
 import { Utils } from '../core/Utils';
 import { logger } from '../core/Logger';
-
 @Discord()
 @SlashGroup({ description: 'Basic music commands', name: 'music' })
 @SlashGroup('music')
 @injectable()
 export class BasicCommands {
-
-// /music play <query> 
-
   @Slash({ description: 'Play a song or playlist from a URL or search query' })
-  async play ( 
-    //interaction: import("discordx").SlashCommandInteraction,
-    interaction: ChatInputCommandInteraction,
+  async play(
+    interaction: CommandInteraction,
     @SlashOption({
       description: 'Song URL or search query',
       name: 'query',
@@ -51,14 +44,12 @@ export class BasicCommands {
     })
     end?: string
   ): Promise<void> {
-    // code project
-      if (!interaction.guild || !interaction.guildId || !interaction.member) {
-        await interaction.reply({ content: '❌ This command can only be used in a server!', ephemeral: true });
-        return;
-        }
-
-    await interaction.deferReply();
+    if (!interaction.guild) {
+      await interaction.reply({ content: 'This command can only be used in servers!', ephemeral: true });
+      return;
+    }
     try {
+      await interaction.deferReply();
       const player = await connectChannel(interaction);
       if (!player.isUserInChannel(interaction.user)) {
         await interaction.editReply({
@@ -120,16 +111,14 @@ export class BasicCommands {
         }
       }
     } catch (error) {
-      console.error('Error in play command', error as Error, 'commands');
-      interaction.reply({ content: '❌ An error occurred while playing the track!', ephemeral: true });
-      return;
+      logger.error('Error in play command', error as Error, 'commands');
+      await interaction.editReply({ 
+        content: '❌ An error occurred while trying to play the track!' 
+      });
     }
   }
-
-// /music pause
-
   @Slash({ description: 'Pause the current track' })
-  async pause(interaction: ChatInputCommandInteraction): Promise<void> {
+  async pause(interaction: CommandInteraction): Promise<void> {
     const validation = await this.validateMusicCommand(interaction);
     if (!validation.isValid) {
       await interaction.reply({ content: validation.errorMessage!, ephemeral: true });
@@ -150,12 +139,8 @@ export class BasicCommands {
     await player.pause();
     await interaction.reply({ content: '⏸️ Music paused!' });
   }
-
-// /music resume
-
-
   @Slash({ description: 'Resume the current track' })
-  async resume(interaction: ChatInputCommandInteraction): Promise<void> {
+  async resume(interaction: CommandInteraction): Promise<void> {
     const validation = await this.validateMusicCommand(interaction);
     if (!validation.isValid) {
       await interaction.reply({ content: validation.errorMessage!, ephemeral: true });
@@ -176,12 +161,9 @@ export class BasicCommands {
     await player.resume();
     await interaction.reply({ content: '▶️ Music resumed!' });
   }
-
-// /music skip
-
   @Slash({ description: 'Skip the current track' })
   async skip(
-    interaction: ChatInputCommandInteraction,
+    interaction: CommandInteraction,
     @SlashOption({
       description: 'Number of tracks to skip',
       name: 'count',
@@ -229,11 +211,8 @@ export class BasicCommands {
       content: `⏭️ Skipped **${currentTrack.title}**${count > 1 ? ` and ${count - 1} more tracks` : ''}!` 
     });
   }
-
-// /music stop
-
   @Slash({ description: 'Stop the music and clear the queue' })
-  async stop(interaction: ChatInputCommandInteraction): Promise<void> {
+  async stop(interaction: CommandInteraction): Promise<void> {
     const player = getPlayer(interaction.guildId!);
     if (!player) {
       await interaction.reply({ content: '❌ No music is currently playing!', ephemeral: true });
@@ -261,7 +240,7 @@ export class BasicCommands {
     await interaction.reply({ content: '⏹️ Music stopped and queue cleared!' });
   }
   @Slash({ description: 'Show information about the currently playing track' })
-  async nowplaying(interaction: ChatInputCommandInteraction): Promise<void> {
+  async nowplaying(interaction: CommandInteraction): Promise<void> {
     const player = getPlayer(interaction.guildId!);
     if (!player || !player.current) {
       await interaction.reply({ content: '❌ No music is currently playing!', ephemeral: true });
@@ -289,7 +268,7 @@ export class BasicCommands {
   }
   @Slash({ description: 'Set the volume of the music player' })
   async volume(
-    interaction: ChatInputCommandInteraction,
+    interaction: CommandInteraction,
     @SlashOption({
       description: 'Volume level (0-100)',
       name: 'level',
@@ -322,7 +301,7 @@ export class BasicCommands {
     await player.setVolume(level);
     await interaction.reply({ content: `🔊 Volume set to **${level}%**!` });
   }
-  private async validateMusicCommand(interaction: ChatInputCommandInteraction): Promise<{ isValid: boolean; errorMessage?: string }> {
+  private async validateMusicCommand(interaction: CommandInteraction): Promise<{ isValid: boolean; errorMessage?: string }> {
     if (!interaction.guild) {
       return { isValid: false, errorMessage: '❌ This command can only be used in servers!' };
     }
@@ -335,7 +314,7 @@ export class BasicCommands {
     }
     return { isValid: true };
   }
-  private async handleVoting(player: any, interaction: ChatInputCommandInteraction, action: string): Promise<{ shouldExecute: boolean; message?: string }> {
+  private async handleVoting(player: any, interaction: CommandInteraction, action: string): Promise<{ shouldExecute: boolean; message?: string }> {
     const voteSet = action === 'pause' ? player.pauseVotes :
                    action === 'resume' ? player.resumeVotes :
                    action === 'skip' ? player.skipVotes :
@@ -365,7 +344,7 @@ export class BasicCommands {
     }
     return embed;
   }
-  public async handleCommandError(interaction: ChatInputCommandInteraction, message: string): Promise<void> {
+  public async handleCommandError(interaction: CommandInteraction, message: string): Promise<void> {
     if (interaction.deferred) {
       await interaction.editReply({ content: message });
     } else {

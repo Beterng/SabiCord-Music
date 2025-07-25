@@ -1,10 +1,11 @@
+import { Guild } from 'discord.js';
 /**
  * MIT License
  * 
  * Copyright (c) 2025 NirrussVn0
  */
 import { 
-  CommandInteraction, 
+  ChatInputCommandInteraction, 
   ApplicationCommandOptionType, 
   EmbedBuilder,
   PermissionFlagsBits,
@@ -13,21 +14,21 @@ import {
   TextChannel
 } from 'discord.js';
 import { Discord, Slash, SlashOption, SlashChoice,SlashGroup } from 'discordx';
-import { Category } from '@discordx/utilities';
 import { injectable, container } from 'tsyringe';
+import { ApplicationCommandRegistries } from "@sapphire/framework";
 import { getPlayer, connectChannel } from '../audio/index';
 import { Database } from '../core/Database';
 import { Settings } from '../core/Settings';
 import { logger } from '../core/Logger';
 @Discord()
-@Category("Admin Commands")
 @SlashGroup({ description: 'Bot configuration and settings commands', name: 'settings' })
 @SlashGroup('settings')
 @injectable()
+
 export class SettingsCommands {
   @Slash({ description: 'Set the bot prefix for this server' })
   async prefix(
-    interaction: CommandInteraction,
+    port_interaction: ChatInputCommandInteraction,
     @SlashOption({
       description: 'New prefix (leave empty to view current)',
       name: 'prefix',
@@ -37,9 +38,10 @@ export class SettingsCommands {
     })
     prefix?: string
   ): Promise<void> {
+    const interaction = port_interaction;
     const validation = await this.validateGuildAndPermissions(interaction);
     if (!validation.isValid) {
-      await interaction.reply({ content: validation.errorMessage!, ephemeral: true });
+      interaction.reply({ content: validation.errorMessage! });
       return;
     }
     try {
@@ -85,9 +87,10 @@ export class SettingsCommands {
       required: false,
       type: ApplicationCommandOptionType.String,
     })
-    interaction: CommandInteraction,
+    port_interaction: ChatInputCommandInteraction,
     language?: string
   ): Promise<void> {
+    const interaction = port_interaction;
     if (!interaction.guild) {
       await interaction.reply({ content: '❌ This command can only be used in servers!', ephemeral: true });
       return;
@@ -126,7 +129,7 @@ export class SettingsCommands {
   }
   @Slash({ description: 'Set a music request channel' })
   async musicchannel(
-    interaction: CommandInteraction,
+    port_interaction: ChatInputCommandInteraction,
     @SlashOption({
       description: 'Text channel for music requests',
       name: 'channel',
@@ -136,6 +139,7 @@ export class SettingsCommands {
     })
     channel?: TextChannel
   ): Promise<void> {
+    const interaction = port_interaction;
     if (!interaction.guild) {
       await interaction.reply({ content: '❌ This command can only be used in servers!', ephemeral: true });
       return;
@@ -162,7 +166,7 @@ export class SettingsCommands {
       await database.settings.updateSettings(interaction.guild.id, {
         $set: { 
           music_request_channel: {
-            text_channel_id: channel.id
+            text_channel_id: parseInt(channel.id)
           }
         }
       });
@@ -186,8 +190,9 @@ export class SettingsCommands {
       type: ApplicationCommandOptionType.Boolean,
     })
     enabled: boolean,
-    interaction: CommandInteraction
+    port_interaction: ChatInputCommandInteraction
   ): Promise<void> {
+    const interaction = port_interaction;
     if (!interaction.guild) {
       await interaction.reply({ content: '❌ This command can only be used in servers!', ephemeral: true });
       return;
@@ -217,7 +222,8 @@ export class SettingsCommands {
     }
   }
   @Slash({ description: 'View current server settings' })
-  async view(interaction: CommandInteraction): Promise<void> {
+  async view(port_interaction: ChatInputCommandInteraction): Promise<void> {
+    const interaction = port_interaction;
     if (!interaction.guild) {
       await interaction.reply({ content: '❌ This command can only be used in servers!', ephemeral: true });
       return;
@@ -254,7 +260,7 @@ export class SettingsCommands {
   }
   @Slash({ description: 'Connect the bot to a voice channel' })
   async connect(
-    interaction: CommandInteraction,
+    port_interaction: ChatInputCommandInteraction,
     @SlashOption({
       description: 'Voice channel to connect to',
       name: 'channel',
@@ -264,6 +270,7 @@ export class SettingsCommands {
     })
     channel?: VoiceChannel
   ): Promise<void> {
+    const interaction = port_interaction;
     if (!interaction.guild) {
       await interaction.reply({ content: '❌ This command can only be used in servers!', ephemeral: true });
       return;
@@ -281,7 +288,8 @@ export class SettingsCommands {
     }
   }
   @Slash({ description: 'Disconnect the bot from voice channel' })
-  async disconnect(interaction: CommandInteraction): Promise<void> {
+  async disconnect(port_interaction: ChatInputCommandInteraction): Promise<void> {
+    const interaction = port_interaction;
     if (!interaction.guild) {
       await interaction.reply({ content: '❌ This command can only be used in servers!', ephemeral: true });
       return;
@@ -307,9 +315,9 @@ export class SettingsCommands {
     });
   }
   @Slash({ description: 'Show bot information and statistics' })
-  async info(interaction: CommandInteraction): Promise<void> {
+  async info(port_interaction: ChatInputCommandInteraction): Promise<void> {
     try {
-
+      const interaction = port_interaction;
       const client = interaction.client;
       const uptime = process.uptime();
       const uptimeString = this.formatUptime(uptime);
@@ -317,10 +325,10 @@ export class SettingsCommands {
       const memoryUsed = (memoryUsage.heapUsed / 1024 / 1024).toFixed(2);
       const embed = new EmbedBuilder()
         .setColor('#0099ff')
-        .setTitle('🤖 SabiCard Bot Information')
+        .setTitle('🤖 Vocard Bot Information')
         .setThumbnail(client.user?.displayAvatarURL() || '')
         .addFields([
-          { name: 'Version', value: '2.0.1', inline: true },
+          { name: 'Version', value: '2.0.0', inline: true },
           { name: 'Uptime', value: uptimeString, inline: true },
           { name: 'Memory Usage', value: `${memoryUsed} MB`, inline: true },
           { name: 'Servers', value: `${client.guilds.cache.size}`, inline: true },
@@ -331,6 +339,7 @@ export class SettingsCommands {
         .setTimestamp();
       await interaction.reply({ embeds: [embed] });
     } catch (error) {
+      const interaction = port_interaction;
       logger.error('Error showing bot info', error as Error, 'commands');
       await interaction.reply({ 
         content: '❌ Failed to load bot information!', 
@@ -339,7 +348,8 @@ export class SettingsCommands {
     }
   }
   @Slash({ description: 'Test bot latency and connection' })
-  async ping(interaction: CommandInteraction): Promise<void> {
+  async ping(port_interaction: ChatInputCommandInteraction): Promise<void> {
+    const interaction = port_interaction;
     const start = Date.now();
     await interaction.deferReply();
     const apiLatency = Date.now() - start;
@@ -372,9 +382,11 @@ export class SettingsCommands {
     if (secs > 0) parts.push(`${secs}s`);
     return parts.join(' ') || '0s';
   }
-  private async validateGuildAndPermissions(interaction: CommandInteraction): Promise<{ isValid: boolean; errorMessage?: string }> {
-    if (interaction.guildId) {
-      return { isValid: false, errorMessage: '❌ This command can only be used in servers!' };
+  private async validateGuildAndPermissions(port_interaction: ChatInputCommandInteraction): Promise<{ isValid: boolean; errorMessage?: string }> {
+    const interaction = port_interaction;
+    const Guildid = ApplicationCommandRegistries.setDefaultGuildIds(['1124284558448271482']);
+    if (!interaction.guild) {
+      return { isValid: false, errorMessage: '❌ Interaction could not get a guild!' };
     }
     const member = interaction.guild?.members.cache.get(interaction.user.id);
     if (!member?.permissions.has(PermissionFlagsBits.ManageGuild)) {
@@ -385,4 +397,5 @@ export class SettingsCommands {
     }
     return { isValid: true };
   }
+
 }

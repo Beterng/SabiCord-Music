@@ -4,8 +4,9 @@
  * Copyright (c) 2025 NirrussVn0
  */
 import { readFileSync, existsSync, readdirSync } from 'fs';
-import { dirname, join } from 'path';
-import { fileURLToPath } from 'url';
+import { join } from 'path';
+import { logger } from '../core/Logger';
+import { dirname } from "@discordx/importer";
 export interface ITranslationData {
   [key: string]: string | ITranslationData;
 }
@@ -27,9 +28,9 @@ export class Translator {
     return Translator.instance;
   }
   private loadTranslations(): void {
-    const langsPath = join(dirname(fileURLToPath(import.meta.url)), 'langs');
+    const langsPath = join(dirname(import.meta.url), 'langs');
     if (!existsSync(langsPath)) {
-      console.warn('Languages directory not found, creating default translations', 'translator');
+      logger.warn('Languages directory not found, creating default translations', 'translator');
       this.createDefaultTranslations();
       return;
     }
@@ -43,17 +44,17 @@ export class Translator {
           const translations = JSON.parse(content);
           this.translations.set(langCode, translations);
           this.availableLanguages.push(langCode);
-          console.debug(`Loaded translations for ${langCode}`, 'translator');
+          logger.debug(`Loaded translations for ${langCode}`, 'translator');
         } catch (error) {
-          console.error(`Failed to load translations for ${langCode}`, error as Error, 'translator');
+          logger.error(`Failed to load translations for ${langCode}`, error as Error, 'translator');
         }
       }
       if (this.availableLanguages.length === 0) {
         this.createDefaultTranslations();
       }
-      console.info(`Loaded ${this.availableLanguages.length} language(s): ${this.availableLanguages.join(', ')}`, 'translator');
+      logger.info(`Loaded ${this.availableLanguages.length} language(s): ${this.availableLanguages.join(', ')}`, 'translator');
     } catch (error) {
-      console.error('Failed to load translations', error as Error, 'translator');
+      logger.error('Failed to load translations', error as Error, 'translator');
       this.createDefaultTranslations();
     }
   }
@@ -181,18 +182,18 @@ export class Translator {
     };
     this.translations.set(this.defaultLanguage, defaultTranslations);
     this.availableLanguages.push(this.defaultLanguage);
-    console.info('Created default English translations', 'translator');
+    logger.info('Created default English translations', 'translator');
   }
   public translate(key: string, language?: string, placeholders?: IPlaceholderData): string {
     const lang = language?.toUpperCase() || this.defaultLanguage;
     const translations = this.translations.get(lang) || this.translations.get(this.defaultLanguage);
     if (!translations) {
-      console.warn(`No translations found for language ${lang}`, 'translator');
+      logger.warn(`No translations found for language ${lang}`, 'translator');
       return key;
     }
     const value = this.getNestedValue(translations, key);
     if (typeof value !== 'string') {
-      console.warn(`Translation key '${key}' not found for language ${lang}`, 'translator');
+      logger.warn(`Translation key '${key}' not found for language ${lang}`, 'translator');
       return key;
     }
     return this.replacePlaceholders(value, placeholders);
@@ -227,9 +228,9 @@ export class Translator {
   public setDefaultLanguage(language: string): void {
     if (this.isLanguageAvailable(language)) {
       this.defaultLanguage = language.toUpperCase();
-      console.info(`Default language set to ${this.defaultLanguage}`, 'translator');
+      logger.info(`Default language set to ${this.defaultLanguage}`, 'translator');
     } else {
-      console.warn(`Language ${language} is not available`, 'translator');
+      logger.warn(`Language ${language} is not available`, 'translator');
     }
   }
   public getDefaultLanguage(): string {
@@ -239,7 +240,7 @@ export class Translator {
     this.translations.clear();
     this.availableLanguages = [];
     this.loadTranslations();
-    console.info('Translations reloaded', 'translator');
+    logger.info('Translations reloaded', 'translator');
   }
 }
 export const translator = Translator.getInstance();

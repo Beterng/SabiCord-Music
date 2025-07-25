@@ -6,14 +6,14 @@
     "auditLog": "D:\\Github\\SabiCord-Music\\SabiCord-Music\\logs\\.02f72435228f516f46a0aff6fc7f58e7604674a6-audit.json",
     "files": [
         {
-            "date": 1753196858443,
-            "name": "D:\\Github\\SabiCord-Music\\SabiCord-Music\\logs\\vocard-2025-07-22.log",
-            "hash": "089f40cdc1b715caa477cca133959a888b385c30bc2f0f459716d7c0269364b2"
+            "date": 1753363092939,
+            "name": "D:\\Github\\SabiCord-Music\\SabiCord-Music\\logs\\vocard-2025-07-24.log",
+            "hash": "6249069ddac5246544428917807ab3f593d79ebcf4843456403117ba7f55df25"
         },
         {
-            "date": 1753229169910,
-            "name": "D:\\Github\\SabiCord-Music\\SabiCord-Music\\logs\\vocard-2025-07-23.log",
-            "hash": "518d008ef0817a053c238366313330a5dc1e87cd16dd446ed5c3a2dc31a67267"
+            "date": 1753404082994,
+            "name": "D:\\Github\\SabiCord-Music\\SabiCord-Music\\logs\\vocard-2025-07-25.log",
+            "hash": "f3a968bcd8e610d83f06e884487eafe9692a31568a0ed4104c092e6631c9f072"
         }
     ],
     "hashType": "sha256"

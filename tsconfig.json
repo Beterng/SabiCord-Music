@@ -7,10 +7,8 @@
     "strict": true,
     "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true,
-
     "experimentalDecorators": true,
     "emitDecoratorMetadata": false,
-
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
@@ -19,7 +17,7 @@
       "@core/*": ["src/core/*"],
       "@interfaces/*": ["src/interfaces/*"],
       "@audio/*": ["src/audio/*"],
-      "@commands/*": ["src/#hidden.commands/*"],
+      "@commands/*": ["src/commands/*"],
       "@views/*": ["src/views/*"],
       "@ipc/*": ["src/ipc/*"],
       "@localization/*": ["src/localization/*"],
